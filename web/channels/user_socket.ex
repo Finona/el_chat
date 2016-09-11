@@ -2,7 +2,7 @@ defmodule ElChat.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", ElChat.RoomChannel
+  channel "room:*", ElChat.RoomChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

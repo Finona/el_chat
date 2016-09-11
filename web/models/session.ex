@@ -13,7 +13,7 @@ defmodule ElChat.Session do
   	defp authenticate(user, password) do
     	case user do
 	    	nil -> false
-	    	_   -> Comeonin.Bcrypt.checkpw(password, user.crypted_password)
+	    	_ -> Comeonin.Bcrypt.checkpw(password, user.crypted_password)
    		end
    	end
 

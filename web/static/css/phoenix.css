@@ -11,16 +11,16 @@
 /* Space out content a bit */
 body, form, ul, table {
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 20px;nav
 }
-
+nav 
 /* Phoenix flash messages */
-.alert:empty { display: none; }
+.alert:empty { display: none; }nav
 
 /* Phoenix inline forms in links and buttons */
 form.link, form.button {
   display: inline;
-}
+}nav
 
 /* Custom page header */
 .header {
