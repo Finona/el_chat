@@ -5,6 +5,7 @@ defmodule ElChat.Room do
     field :name, :string
 
     has_many :messages, ElChat.Message
+    belongs_to :user, ElChat.User
 
     timestamps()
   end
@@ -14,7 +15,7 @@ defmodule ElChat.Room do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name])
-    |> validate_required([:name])
+    |> cast(params, [:name, :user_id])
+    |> validate_required([:name, :user_id])
   end
 end

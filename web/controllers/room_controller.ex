@@ -3,10 +3,11 @@ defmodule ElChat.RoomController do
 	alias ElChat.Repo
 	alias ElChat.Room
 	alias ElChat.Message
+	import ElChat.Session, only: [current_user: 1]
 	plug ElChat.Plugs.Authenticate
 
 	def index(conn, _params) do
-		rooms = Repo.all(Room)
+		rooms = Repo.all(Room) |> Repo.preload(:user)
     	render conn, "index.html", %{rooms: rooms}
  	end
 
@@ -16,7 +17,9 @@ defmodule ElChat.RoomController do
  	end
 
  	def create(conn, %{"room" => room_params}) do
-    changeset = Room.changeset(%Room{}, room_params)
+ 		room_params =  Map.put(room_params, "user_id", current_user(conn).id)
+
+    	changeset = Room.changeset(%Room{}, room_params)
 
 	    case Repo.insert(changeset) do
 	      {:ok, _room} ->
@@ -38,7 +41,7 @@ defmodule ElChat.RoomController do
 
  	 def delete(conn, %{"id" => id}) do
  	 	room = Repo.get(Room, id)
- 	 	
+
 	    Repo.delete(room)
 	        conn
 	        |> put_flash(:info, "Room deleted successfully.")

@@ -8,6 +8,8 @@ defmodule ElChat.User do
     field :password, :string, virtual: 
 
     has_many :messages, ElChat.Message
+    has_many :rooms, ElChat.Room
+
 
     timestamps()
   end
