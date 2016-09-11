@@ -1,6 +1,6 @@
 # ElChat
 
-To start your Phoenix app:
+To start your Phoenix app: https://serene-island-44483.herokuapp.com
 
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
