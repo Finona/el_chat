@@ -9,7 +9,7 @@ let channel = socket.channel(`room:${roomId}`, {})
 let messageContainer = $("#chat-box")
 let user = $("#current-user").text()
 channel.on("new_msg", payload => {
-	messageContainer.append(`<br/>[${user}]: ${payload.body}`)
+	messageContainer.append(`<br/>[${payload.user}]: ${payload.body}`)
 })
 
 channel.join()

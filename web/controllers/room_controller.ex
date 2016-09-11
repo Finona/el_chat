@@ -38,6 +38,7 @@ defmodule ElChat.RoomController do
 
  	 def delete(conn, %{"id" => id}) do
  	 	room = Repo.get(Room, id)
+ 	 	
 	    Repo.delete(room)
 	        conn
 	        |> put_flash(:info, "Room deleted successfully.")
