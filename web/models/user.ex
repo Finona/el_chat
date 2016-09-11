@@ -5,7 +5,9 @@ defmodule ElChat.User do
   schema "users" do
     field :email, :string
     field :crypted_password, :string
-    field :password, :string, virtual: true
+    field :password, :string, virtual: 
+
+    has_many :messages, ElChat.Message
 
     timestamps()
   end

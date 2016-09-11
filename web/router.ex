@@ -17,13 +17,10 @@ defmodule ElChat.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    get "/rooms", RoomController, :index
-    get "/rooms/new", RoomController, :new
-    post "/rooms", RoomController, :create
-    get "/rooms/:id", RoomController, :show
-    delete "/rooms/:id", RoomController, :delete
-    get "registrations/new", RegistrationController, :new
-    post "registrations", RegistrationController, :create
+
+    resources "/rooms", RoomController, only: ~w(index new create show delete)a
+    resources "/registrations", RegistrationController, only: ~w(new create)a
+
     get "/login", SessionController, :new
     post "/login", SessionController, :create
     delete "/logout", SessionController, :delete

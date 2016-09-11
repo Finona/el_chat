@@ -16,17 +16,15 @@
       <header class="header">
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
             <li> <%= if logged_in?(@conn) do %>
-              <li id="current-user"><%= current_user(@conn).email %></li>
-              <li><%= link "Logout", to: session_path(@conn, :delete), method: :delete %></li>
+              <li id="current-user" class="email"><%= current_user(@conn).email %></li>
+              <li class="buttom"><%= link "Logout", to: session_path(@conn, :delete), method: :delete %></li>
             <% else %>
-              <li><%= link "Login",    to: "/login" %></li>
-              <li><%= link "Register", to: registration_path(@conn, :new) %></li>
+              <li class="buttom"><%= link "Login",    to: "/login" %></li>
+              <li class="buttom"><%= link "Register", to: registration_path(@conn, :new) %></li>
             <% end %></li>
           </ul>
         </nav>
-        <span class="logo" style="width: 60%;"></span>
       </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>

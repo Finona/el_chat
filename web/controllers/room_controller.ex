@@ -2,6 +2,7 @@ defmodule ElChat.RoomController do
 	use ElChat.Web, :controller
 	alias ElChat.Repo
 	alias ElChat.Room
+	alias ElChat.Message
 	plug ElChat.Plugs.Authenticate
 
 	def index(conn, _params) do
@@ -29,7 +30,10 @@ defmodule ElChat.RoomController do
 
  	 def show(conn, %{"id" => id}) do
  	 	room = Repo.get(Room, id)
- 	 	render conn, "show.html", %{room: room}
+ 	 	query = from m in Message, where: m.room_id == ^id
+ 	 	messages = Repo.all(query)
+ 	 	|> Repo.preload(:user)
+ 	 	render conn, "show.html", %{room: room, messages: messages}
  	 end
 
  	 def delete(conn, %{"id" => id}) do

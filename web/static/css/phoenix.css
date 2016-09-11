@@ -11,16 +11,16 @@
 /* Space out content a bit */
 body, form, ul, table {
   margin-top: 20px;
-  margin-bottom: 20px;nav
+  margin-bottom: 20px;
 }
-nav 
+
 /* Phoenix flash messages */
-.alert:empty { display: none; }nav
+.alert:empty { display: none; }
 
 /* Phoenix inline forms in links and buttons */
 form.link, form.button {
   display: inline;
-}nav
+}
 
 /* Custom page header */
 .header {
@@ -29,7 +29,7 @@ form.link, form.button {
 .logo {
   width: 519px;
   height: 71px;
-  display: inline-block;
+  display: none;
   margin-bottom: 1em;
   background-image: url("/images/phoenix.png");
   background-size: 519px 71px;
@@ -41,6 +41,31 @@ form.link, form.button {
   padding-right: 15px;
   padding-left: 15px;
 }
+
+.header {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.buttom a{
+	padding: 10px 15px;
+	border-radius: 4px;
+	display: block;
+	text-decoration: none;
+	background-color: transparent;
+	color: #337ab7
+}
+
+.buttom a:hover {
+	background-color: rgba(0,0,0,.3);
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.email {
+	padding: 10px 15px;
+}
+
 
 /* Customize container */
 @media (min-width: 768px) {

@@ -9,7 +9,7 @@ let channel = socket.channel(`room:${roomId}`, {})
 let messageContainer = $("#chat-box")
 let user = $("#current-user").text()
 channel.on("new_msg", payload => {
-	messageContainer.append(`<span style="color: white;"><br/>[${user}]: ${payload.body}</span>`)
+	messageContainer.append(`<br/>[${user}]: ${payload.body}`)
 })
 
 channel.join()
@@ -17,7 +17,7 @@ channel.join()
 let chatInput = $('#chat-input')
 chatInput.on("keypress", event => {
 	if(event.keyCode == 13){
-		channel.push("new_msg", {body: chatInput.val()} )
+		channel.push("new_msg", {body: chatInput.val(), user: user, room_id: roomId} )
 		chatInput.val("")
 	}
 })

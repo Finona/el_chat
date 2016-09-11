@@ -4,6 +4,8 @@ defmodule ElChat.Room do
   schema "rooms" do
     field :name, :string
 
+    has_many :messages, ElChat.Message
+
     timestamps()
   end
 
