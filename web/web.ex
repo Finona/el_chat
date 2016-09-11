@@ -52,6 +52,7 @@ defmodule ElChat.Web do
       import ElChat.Router.Helpers
       import ElChat.ErrorHelpers
       import ElChat.Gettext
+      import ElChat.Session, only: [current_user: 1, logged_in?: 1]
     end
   end
 

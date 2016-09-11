@@ -13,7 +13,16 @@ defmodule ElChat.SessionController do
 				|> put_flash(:info, "Successfully logged in!")
 				|> redirect to: "/rooms"
 			:error -> 
+				conn
+				|> put_flash(:info, "Wrong data")
 		end
+	end
+
+	def delete(conn, _params) do
+		conn
+		|> delete_session(:current_user)
+		|> put_flash(:info, "Come back again!")
+		|> redirect to: "/rooms"
 	end
 	
 end

@@ -11,9 +11,10 @@ defmodule ElChat.RegistrationController do
     changeset = User.changeset(%User{}, user_params)
 
 	    case ElChat.Registration.create(changeset) do
-	      {:ok, _user} ->
+	      {:ok, user} ->
 	        conn
 	        |> put_flash(:info, "Your acount created successfully.")
+	        |> put_session(:current_user, user.id)
 	        |> redirect(to: "/rooms")
 	      {:error, changeset} ->
 	        render(conn, "new.html", changeset: changeset)
