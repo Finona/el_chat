@@ -16,9 +16,9 @@ defmodule ElChat.Router do
   scope "/", ElChat do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", RoomController, :index
 
-    resources "/rooms", RoomController, only: ~w(index new create show delete)a
+    resources "/rooms", RoomController, only: ~w( new create show delete)a
     resources "/registrations", RegistrationController, only: ~w(new create)a
 
     get "/login", SessionController, :new

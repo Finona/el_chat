@@ -12,6 +12,7 @@ defmodule ElChat.Plugs.Authenticate do
 			conn
 			|> put_flash(:error, "You must login")
 			|> redirect(to: session_path(conn, :new))
+			|> halt
 		_ -> conn
 		end
 	end

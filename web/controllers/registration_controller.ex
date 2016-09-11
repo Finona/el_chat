@@ -15,7 +15,7 @@ defmodule ElChat.RegistrationController do
 	        conn
 	        |> put_flash(:info, "Your acount created successfully.")
 	        |> put_session(:current_user, user.id)
-	        |> redirect(to: "/rooms")
+	        |> redirect(to: room_path(conn, :index))
 	      {:error, changeset} ->
 	        render(conn, "new.html", changeset: changeset)
 	    end
