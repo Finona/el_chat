@@ -2,6 +2,7 @@ defmodule ElChat.RoomController do
 	use ElChat.Web, :controller
 	alias ElChat.Repo
 	alias ElChat.Room
+	plug ElChat.Plugs.Authenticate
 
 	def index(conn, _params) do
 		rooms = Repo.all(Room)
